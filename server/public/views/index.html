@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="ourApps">
+	<head>
+		<title>Angular Order History</title>
+
+		<script src="/public/vendor/angular.min.js"></script>
+		<script src="/public/scripts/client.js"></script>
+		<meta charset="utf-8">
+
+	</head>
+	<body ng-controller="IndexController">
+		<header>
+			Angular Order History
+		</header>
+		<div>
+			<div ng-repeat="customer in customers">
+		<p>{{ customer.first_name }} {{ customer.last_name }}
+			<button ng-if="customer.count > 0" ng-click="getOrders(customer.id)">GET ORDERS</button>
+			<span ng-if="customer.count == 0">ORDER SOMETHING ALREADY!</span>
+		</p>
+
+	</div>
+	<div>
+		<span>  {{ order[0].order_date }} ${{ order[0].total }} {{ order[0].id }} {{ order[0].street }} {{ order[0].city }} {{ order[0].state }}
+			      {{ order[0].zip }} {{ order[0].address_type }} {{ order[0].unit_price }} {{ order[0].quantity }} {{ order[0].description }}
+
+	</span>
+	      <p ng-repeat="order in orders"> {{ order.total }} </p>
+	</div>
+	</div>
+
+	</body>
+</html>
