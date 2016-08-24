@@ -10,7 +10,7 @@ ourApps.controller('IndexController', ['$scope', '$http', function ($scope, $htt
 		console.log('response object', response);
 		$scope.customers = response.data;
 
-		response[0]
+		// response[0]
 
 		$scope.selection = "noOrders"
 	});
@@ -22,8 +22,13 @@ ourApps.controller('IndexController', ['$scope', '$http', function ($scope, $htt
 			url: '/customers/' + id
 		}).then(function (response){
 			console.log('response object', response);
-			$scope.order = response.data;
-			
+			$scope.orders = response.data;
+			var total = 0;
+			response.data.forEach(function(order) {
+				var number = parseFloat(order.total);
+				total += number;
+			});
+			$scope.totalAmount = total;
 		})
 	}
 }]);

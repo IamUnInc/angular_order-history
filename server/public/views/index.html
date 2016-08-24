@@ -5,29 +5,40 @@
 
 		<script src="/public/vendor/angular.min.js"></script>
 		<script src="/public/scripts/client.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" charset="utf-8">
 		<meta charset="utf-8">
 
 	</head>
 	<body ng-controller="IndexController">
-		<header>
-			Angular Order History
-		</header>
-		<div>
+  <div class="container">
+		<div class="row">
+				<div class="col-sm-12">
+					<h1>
+						Angular Order History
+					</h1>
+				</div>
+		</div>
+		<div class="row">
+		<div class="col-sm-4">
 			<div ng-repeat="customer in customers">
-		<p>{{ customer.first_name }} {{ customer.last_name }}
-			<button ng-if="customer.count > 0" ng-click="getOrders(customer.id)">GET ORDERS</button>
-			<span ng-if="customer.count == 0">ORDER SOMETHING ALREADY!</span>
-		</p>
+		    <p>{{ customer.first_name }} {{ customer.last_name }}
+			  <button ng-if="customer.count > 0" ng-click="getOrders(customer.id)">GET ORDERS</button>
+			  <span ng-if="customer.count == 0">ORDER SOMETHING ALREADY!</span>
+		    </p>
+	    </div>
+    </div>
 
-	</div>
-	<div>
-		<span>  {{ order[0].order_date }} ${{ order[0].total }} {{ order[0].id }} {{ order[0].street }} {{ order[0].city }} {{ order[0].state }}
-			      {{ order[0].zip }} {{ order[0].address_type }} {{ order[0].unit_price }} {{ order[0].quantity }} {{ order[0].description }}
+		<div class="col-sm-4">
+		</div>
 
-	</span>
-	      <p ng-repeat="order in orders"> {{ order.total }} </p>
-	</div>
-	</div>
+		<div class="col-sm-4">
+		<span class="go-left" ng-repeat="order in orders">  {{ order.order_date }} {{ order.total }} {{ order.id }} {{ order.street }} {{ order.city }} {{ order.state }}
+			      {{ order.zip }} {{ order.address_type }} {{ order.unit_price }} {{ order.quantity }} {{ order.description }}
 
+	</span class="go-right">
+	      <p ng-repeat="order in orders"> ${{ order.total }} </p>
+				<p> Total Monies: ${{ totalAmount }} </p>
+  </div>
+</div>
 	</body>
 </html>
